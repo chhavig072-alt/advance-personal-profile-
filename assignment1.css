@@ -1,0 +1,276 @@
+/* --- 1. GLOBAL STYLES & RESET --- */
+:root {
+    /* Color Theme: Black Mode  */
+    --bg-color: #000000;
+    --card-bg: #1a1a1a;
+    --text-color: #f0f0f0;
+    --accent-color: #4a90e2; /* Blue accent for buttons/highlights */
+    --hover-color: #357abd;
+    --font-main: 'Poppins', sans-serif; /* Typography [cite: 41] */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease; /* Smooth transition [cite: 45] */
+}
+
+ul {
+    list-style: none;
+}
+
+/* Container utility for spacing using relative units [cite: 38] */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 4rem 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+    width: 100%;
+}
+
+/* --- 2. HEADER (FLEXBOX)  --- */
+#main-header {
+    background-color: #111;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #333;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Aligns logo left, nav right */
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem; /* Space between links */
+}
+
+.nav-links a:hover {
+    color: var(--accent-color); /* Hover Effect [cite: 44] */
+}
+
+/* --- 3. HERO SECTION (FLEXBOX & ANIMATION) --- */
+#hero {
+    min-height: 80vh; /* Relative unit [cite: 38] */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #000 0%, #111 100%);
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.hero-text {
+    flex: 1;
+    padding-right: 2rem;
+    animation: fadeIn 1.5s ease-in-out; /* Load Animation [cite: 47] */
+}
+
+.hero-text h2 {
+    font-size: 2rem;
+    color: #ccc;
+}
+
+/* Keyframe Animation for Text  */
+@keyframes colorChange {
+    0% { color: #ff6b6b; }
+    50% { color: #feca57; }
+    100% { color: #48dbfb; }
+}
+
+.highlight-text {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 10px 0;
+    animation: colorChange 5s infinite alternate; /* Required Animation */
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    border-radius: 50%;
+    border: 4px solid var(--accent-color);
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+}
+
+/* Button Styles */
+.cta-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background-color: var(--accent-color);
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Transition [cite: 45] */
+}
+
+.cta-button:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-3px); /* Hover Effect [cite: 45] */
+}
+
+/* --- 4. SKILLS & PROJECTS (CSS GRID)  --- */
+/* Both sections use Grid */
+.skills-grid, .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive Grid */
+    gap: 2rem;
+}
+
+.skill-card, .project-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition [cite: 20] */
+}
+
+.skill-card:hover, .project-card:hover {
+    transform: translateY(-10px); /* Hover Effect [cite: 20] */
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.05);
+}
+
+.skill-card h3, .project-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+/* --- 5. CONTACT FORM --- */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #000;
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* --- 6. FOOTER --- */
+footer {
+    background-color: #111;
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid #333;
+}
+
+.social-links {
+    margin: 1rem 0;
+}
+
+#back-to-top {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* --- 7. ANIMATIONS --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- 8. RESPONSIVE DESIGN (MEDIA QUERIES) [cite: 6, 36] --- */
+@media (max-width: 768px) {
+    /* Stack Hero Section */
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero-text {
+        padding-right: 0;
+        margin-top: 2rem;
+    }
+    
+    .hero-image img {
+        width: 200px;
+        height: 200px;
+    }
+
+    /* Adjust text sizes */
+    .highlight-text {
+        font-size: 2.5rem;
+    }
+
+    .nav-links {
+        font-size: 0.9rem;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
